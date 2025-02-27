@@ -1,0 +1,168 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mix Your Colors</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barrio&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: rgb(85, 85, 85);
+            text-align: center;
+            font-family: "Barrio", serif;
+            transition: background-color 0.5s ease-in-out; /* Smooth transition */
+        }
+
+        input {
+            font-size: 2em;
+            text-transform: uppercase;
+            margin: 10px;
+            text-align: center;
+            width: 50px;
+        }
+
+        button {
+            font-size: 1.5em;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        #charInput1 {
+            font-family: "Barrio", serif;
+             font-weight: 400;
+             font-style: normal;
+            margin-top: 2em;
+            width: 7em;
+            height: 3em;
+            background-color: rgb(255, 255, 255);
+            color: rgb(0, 0, 0);
+            font-size: 30px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            border-radius: 0.5em;
+            border: 2px solid white; 
+            text-align: center;
+    transition: all 0.3s ease-in-out; 
+        
+        }
+
+        #charInput2 {
+            font-family: "Barrio", serif;
+             font-weight: 400;
+             font-style: normal;
+            margin-left: 1em;
+            margin-top: 2em;
+            width: 7em;
+            height: 3em;
+            background-color: rgb(255, 255, 255);
+            color: rgb(0, 0, 0);
+            font-size: 30px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            border-radius: 0.5em;
+            border: 2px solid white; /* Adds a white border */
+            text-align: center;
+    transition: all 0.3s ease-in-out; 
+        }
+
+        #submitButton {
+
+}
+
+        #displayedImage {
+            display: none;
+            margin-top: 20px;
+            max-width: 300px;
+        }
+
+        h1{
+            text-align: center;
+            font-family: "Barrio", serif;
+             font-weight: 400;
+             font-style: normal;
+            color: White;
+            font-size: 7em;
+            padding-left: 1em;
+            padding-right: 1em;
+            padding-top: 1em;
+            margin: auto;
+
+        }
+
+    </style>
+</head>
+<body>
+
+<h1>Type and mix colors from the RYB color wheel! (R, Y, B, O, G, P)</h1>
+
+<input type="text" id="charInput1" maxlength="1" placeholder="R, Y, B, O, G, P">
+<input type="text" id="charInput2" maxlength="1" placeholder="R, Y, B, O, G, P">
+
+<button onclick="displayImage()" id="submitButton">Mix Colors</button>
+
+<img id="displayedImage" src="" alt="Mixed Color Result">
+
+<script>
+    function displayImage() {
+        const imgElement = document.getElementById("displayedImage");
+
+        // Valid RYB colors
+        const validColors = {
+            "R": "Red",
+            "Y": "Yellow",
+            "B": "Blue",
+            "O": "Orange",
+            "G": "Green",
+            "P": "Purple"
+        };
+
+        // Input values
+        const input1 = document.getElementById("charInput1").value.toUpperCase();
+        const input2 = document.getElementById("charInput2").value.toUpperCase();
+
+        // Check if both inputs are valid colors
+        if (!(input1 in validColors) || !(input2 in validColors)) {
+            alert("Please enter valid colors variables.");
+            return;
+        }
+
+        // Define mixing results
+        const colorMixes = {
+            "R+Y": "O", // Red + Yellow = Orange
+            "Y+R": "O",
+            "Y+B": "G", // Yellow + Blue = Green
+            "B+Y": "G",
+            "R+B": "P", // Red + Blue = Purple
+            "B+R": "P"
+        };
+
+        // Get the mix result
+        let resultColor = colorMixes[input1 + "+" + input2] || colorMixes[input2 + "+" + input1];
+
+        if (!resultColor) {
+            resultColor = input1; // If same color, return the same
+        }
+
+        // Image mapping
+        const colorData = {
+            "R": { name: "Red", hex: "#FF0000", img: "https://via.placeholder.com/300/FF0000/FFFFFF?text=Red" },
+            "Y": { name: "Yellow", hex: "#FFFF00", img: "https://via.placeholder.com/300/FFFF00/000000?text=Yellow" },
+            "B": { name: "Blue", hex: "#0000FF", img: "https://via.placeholder.com/300/0000FF/FFFFFF?text=Blue" },
+            "O": { name: "Orange", hex: "#FFA500", img: "https://via.placeholder.com/300/FFA500/000000?text=Orange" },
+            "G": { name: "Green", hex: "#008000", img: "https://via.placeholder.com/300/008000/FFFFFF?text=Green" },
+            "P": { name: "Purple", hex: "#800080", img: "https://via.placeholder.com/300/800080/FFFFFF?text=Purple" }
+        };
+
+        // Change background color
+        document.body.style.backgroundColor = colorData[resultColor].hex;
+
+        // Set image and display
+        imgElement.src = colorData[resultColor].img;
+        imgElement.style.display = "block";
+    }
+</script>
+
+</body>
+</html>
