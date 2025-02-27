@@ -8,10 +8,10 @@
     <title>Mix Your Colors</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Barrio&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Barriecito&family=Barrio&display=swap" rel="stylesheet">
     <style>
         body {
-            background-color: rgb(85, 85, 85);
+            background-color: rgb(0, 0, 0);
             text-align: center;
             font-family: "Barrio", serif;
             transition: background-color 0.5s ease-in-out; /* Smooth transition */
@@ -32,9 +32,9 @@
         }
 
         #charInput1 {
-            font-family: "Barrio", serif;
-             font-weight: 400;
-             font-style: normal;
+            font-family: "Barriecito", serif;
+  font-weight: 400;
+  font-style: normal;
             margin-top: 2em;
             width: 7em;
             height: 3em;
@@ -42,7 +42,7 @@
             color: rgb(0, 0, 0);
             font-size: 30px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-            border-radius: 0.5em;
+            border-radius: 20em;
             border: 2px solid white; 
             text-align: center;
     transition: all 0.3s ease-in-out; 
@@ -50,34 +50,40 @@
         }
 
         #charInput2 {
-            font-family: "Barrio", serif;
-             font-weight: 400;
-             font-style: normal;
-            margin-left: 1em;
-            margin-top: 2em;
+            font-family: "Barriecito", serif;
+  font-weight: 400;
+  font-style: normal;
             width: 7em;
             height: 3em;
             background-color: rgb(255, 255, 255);
             color: rgb(0, 0, 0);
             font-size: 30px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-            border-radius: 0.5em;
+            border-radius: 20em;
             border: 2px solid white; /* Adds a white border */
             text-align: center;
     transition: all 0.3s ease-in-out; 
         }
 
+        .input-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+
         #submitButton {
             font-family: "Barrio", serif;
              font-weight: 400;
              font-style: normal;
-             background-color: rgb(54, 54, 54);
+             background-color: rgb(111, 111, 111);
              color: rgb(255, 255, 255);
              box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
             border-radius: 0.5em;
             border: 2px solid white; 
             width: 7em;
             height: 3em;
+            margin-top: 1em;
 
 
 }
@@ -103,18 +109,19 @@
 
         }
 
+        
     </style>
 </head>
 <body>
 
-<h1>Type and mix colors from the RYB color wheel! (R, Y, B, O, G, P)</h1>
+<h1>Type and mix colors from the color wheel!</h1>
 
-<input type="text" id="charInput1" maxlength="1" placeholder="R, Y, B, O, G, P">
-<input type="text" id="charInput2" maxlength="1" placeholder="R, Y, B, O, G, P">
+<div class="input-container">
+    <input type="text" id="charInput1" maxlength="1" placeholder="type a color">
+    <input type="text" id="charInput2" maxlength="1" placeholder="type a color">
+    <button onclick="displayImage()" id="submitButton">Mix Colors</button>
+</div>
 
-<button onclick="displayImage()" id="submitButton">Mix Colors</button>
-
-<img id="displayedImage" src="" alt="Mixed Color Result">
 
 <script>
     function displayImage() {
@@ -127,7 +134,9 @@
             "B": "Blue",
             "O": "Orange",
             "G": "Green",
-            "P": "Purple"
+            "V": "Violet",
+            "W":"White,",
+            "P":"Pink",
         };
 
         // Input values
@@ -146,8 +155,12 @@
             "Y+R": "O",
             "Y+B": "G", // Yellow + Blue = Green
             "B+Y": "G",
-            "R+B": "P", // Red + Blue = Purple
-            "B+R": "P"
+            "R+B": "V", // Red + Blue = Purple
+            "B+R": "V",
+            "R+W": "P",
+            "W+R": "P",
+            "Y+W": "LY",
+            "W+Y": "LY",
         };
 
         // Get the mix result
@@ -164,7 +177,11 @@
             "B": { name: "Blue", hex: "#0000FF",  },
             "O": { name: "Orange", hex: "#FFA500", },
             "G": { name: "Green", hex: "#008000" },
-            "P": { name: "Purple", hex: "#800080" }
+            "V": { name: "Violet", hex: "#800080" },
+            "P": { name: "Pink", hex:"#FFC0CB"},
+            "W": { name: "White", hex:"	#FFFFFF"},
+            "LY": { name: "Light Yellow", hex:"#fff192"}
+            
         };
 
         // Change background color
