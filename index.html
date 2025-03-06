@@ -40,12 +40,10 @@
             font-family: "Barriecito", serif;
   font-weight: 400;
   font-style: normal;
-    
-            
             width: 7em;
             height: 3em;
             background-color: rgb(255, 255, 255);
-            color: rgba(0, 0, 0, 0);
+            color: rgb(0, 0, 0);
             border:none;
             font-size: 30px;
             padding: 8px;
@@ -93,7 +91,7 @@
             font-family: "Barrio", serif;
              font-weight: 400;
              font-style: normal;
-             font-size: 5em;
+             font-size: 4em;
              background-color: rgba(0, 0, 0, 0);
              color: rgb(255, 255, 255);
             border: none; 
@@ -102,10 +100,11 @@
 }
 #submitButton:hover {
     scale: 1.1;
-
-
 }
 
+#submitButton::content{
+    color: rgb(162, 162, 162);
+}
         #displayedImage {
             display: none;
             margin-top: 20px;
@@ -121,16 +120,16 @@
             font-size: 7em;
             padding-left: 1em;
             padding-right: 1em;
-            padding-top: 0.5em;
-            margin: auto;
+
+            margin-bottom: 0.2em;
             
         }
 
         #bottomLeftImage {
     position: absolute;
-    bottom: 10em;
-    left: 10em;
-    width: 15em; /* Adjust size as needed */
+    bottom: 20em;
+    left: 8em;
+    width: 10em; /* Adjust size as needed */
     height: auto;
     scale: 1.4;
 }
@@ -143,24 +142,6 @@
     scale: 1.4;
 }
 
-#whitepaint1{
-    position: absolute;
-    bottom: 28em;
-    left: 45em;
-    width: 15em;
-    height: 8em;
-    z-index: -1;
-}
-
-
-#whitepaint2{
-    position: absolute;
-    bottom: 28em;
-    right: 45em;
-    width: 15em;
-    height: 8em;
-    z-index: -1;
-}
 
 footer{
     color: white;
@@ -193,7 +174,7 @@ footer{
 p {
     color:white;
     font-size: 3em;
-    margin-top: 1em;
+    margin-top: 3em;
     animation: float 2s ease-in-out infinite; /* Floating effect */
 }
 
@@ -308,6 +289,12 @@ footer{
 
  <img id="bottomLeftImage" src="./images/paint palette.png">
 
+ <p> Key: <span style="color: rgb(211, 72, 72);">R=red</span>
+    <span style="color: rgb(248, 233, 66);">Y=yellow</span>
+    <span style="color: rgb(69, 96, 160); "> B=blue</span>
+    <span style="color: rgb(255, 255, 255);">W=White</span>
+</p>
+
 
  <div class="input-row">
     <input type="text" id="charInput1" maxlength="1" placeholder="color 1 (RGBW)">
@@ -322,11 +309,6 @@ footer{
 <img id="bottomRightImage" src="./images/paint tube.png">
 
 
-<p> Key: <span style="color: rgb(211, 72, 72);">R=red</span>
-    <span style="color: rgb(248, 233, 66);">Y=yellow</span>
-    <span style="color: rgb(69, 96, 160); "> B=blue</span>
-    <span style="color: rgb(255, 255, 255);">W=White</span>
-</p>
 
 <!--
 <img id="whitepaint1" src="./images/white.png">
